@@ -14,6 +14,14 @@ function App() {
     setAdvice('GET YOUR ADVICE');
   }
 
+  function copyAdvice() {
+    navigator.clipboard.writeText(advice).then(() => {
+      alert('Advice copied to clipboard!');
+    }).catch(err => {
+      console.error('Failed to copy the text: ', err);
+    });
+  }
+
   return (
     <>
       <div className='flex justify-center items-center h-screen px-4 sm:px-8 md:px-12 lg:px-16'>
@@ -27,7 +35,7 @@ function App() {
             Click here for the advice
           </button>
           <div className='flex flex-row gap-4 flex-wrap justify-center'>
-            <button className='text-black p-1 sm:p-1 md:p-2 lg:p-3 font-mono uppercase border border-black'>
+            <button onClick={copyAdvice} className='text-black p-1 sm:p-1 md:p-2 lg:p-3 font-mono uppercase border border-black'>
               Copy Advice
             </button>
             <button 
